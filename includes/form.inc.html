@@ -1,0 +1,42 @@
+<div class="col-12">
+    <h1 class="text-center">Ajouter des données</h1>
+    <form action="index.php" method="post">
+        <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Renseigner votre prénom">
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" id="nom" class="form-control" placeholder="Renseigner votre nom">
+        </div>
+        <div class="form-group">
+            <label for="age">Âge (18 à 60 ans)</label>
+            <input type="number" name="age" min="18" max="60" id="age" class="form-control">
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <div class="input-group-text">Taille (entre 1.6 et 2m) </div>
+        </div>
+            <input type="number" name="taille" min="1.6" max="2" step="0.05" id="taille" class="form-control">
+            <div class="input-group-prepend">
+                <div class="input-group-text">m </div>
+            </div>
+        </div>
+        <fieldset class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio" id="apprenant" value="apprenant" checked>
+            <label class="form-check-label" for="apprenant">
+                Apprenant
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio" id="formateur" value="formateur">
+            <label class="form-check-label" for="formateur">
+                Formateur
+            </label>
+        </div>
+        </fieldset>
+        <button type="submit" name="enregistrer" class="btn btn-primary float-right">Enregistrer les données</button>
+    </form>
+</div>
+
