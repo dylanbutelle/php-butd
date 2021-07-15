@@ -11,9 +11,9 @@ session_start();
 <header>
     <?php include "./includes/header.inc.html"; ?>
 </header>
-<div>
+<div class="container">
     <div class="row">
-        <nav class="col-sm-4 col-lg-2 m-2">
+        <nav class="col-sm-4 col-lg-3 m-2">
             <a href="index.php">
                 <button type="button" class="btn btn-outline-secondary col-12">Home</button>
             </a>
@@ -45,10 +45,10 @@ session_start();
                 $radio = htmlentities($_POST['radio']);
 
                 $table = array(
-                    'prenom' => $prenom,
-                    'nom' => $nom,
+                    'first_name' => $prenom,
+                    'last_name' => $nom,
                     'age' => $age,
-                    'taille' => $taille,
+                    'size' => $taille,
                     'situation' => $radio
                 );
                 //Attribution de la session
@@ -74,41 +74,42 @@ session_start();
                 print "</pre>";
             } else if (isset($_GET['concatenation'])) {
 
-                echo "<h1>Concaténation</h1>";
+                echo "<h1>Concaténation</h1><br>";
 
                 //Concaténation sans modifs
                 echo "<p>===> Construction d'une phrase avec le contenu du tableau :</p>";
-                echo "<h2>".$table["prenom"]." ".$table["nom"]. "</h2>";
-                echo "<p>".$table["age"]." ans, je mesure ".$table["taille"]."m et je fais partie des ".$table["situation"]."s de la promo Simplon</p><br>";
+                echo "<h2>".$table["first_name"]." ".$table["last_name"]. "</h2>";
+                echo "<p>".$table["age"]." ans, je mesure ".$table["size"]."m et je fais partie des ".$table["situation"]."s de la promo Simplon</p><br>";
 
                 //MAJ Du tableau
-                $table['prenom'] = ucfirst($table['prenom']);
-                $table['nom'] = strtoupper($table['nom']);
+                $table['first_name'] = ucfirst($table['first_name']);
+                $table['last_name'] = strtoupper($table['last_name']);
                 echo "<p>===> Construction d'une phrase après MAJ du tableau :</p>";
-                echo "<h2>".$table["prenom"]." ".$table["nom"]."</h2>";
-                echo "<p>".$table["age"]." ans, je mesure ".$table["taille"]."m et je fais partie des ".$table["situation"]."s de la promo Simplon</p><br>";
+                echo "<h2>".$table["first_name"]." ".$table["last_name"]."</h2>";
+                echo "<p>".$table["age"]." ans, je mesure ".$table["size"]."m et je fais partie des ".$table["situation"]."s de la promo Simplon</p><br>";
 
                 //Remplacement du point par la virgule
                 echo "<p>===> Affichage d'une virgule à la place du point pour la taille :</p>";
-                echo "<h2>".$table["prenom"]." ".$table["nom"]."</h2>";
-                echo "<p>".$table["age"]." ans, je mesure " . str_replace('.', ',', $table['taille']) . "m et je fais partie des". $table[situation]                ."s de la promo Simplon</p>";
+                echo "<h2>".$table["first_name"]." ".$table["last_name"]."</h2>";
+                echo "<p>".$table["age"]." ans, je mesure " . str_replace('.', ',', $table['size']) . "m et je fais partie des". $table['situation']                ."s de la promo Simplon</p>";
 
             } else if (isset($_GET['loop'])) {
 
-                echo "<h1>Boucle</h1>";
-                echo "===> Lecture du tableau à l'aide d'une boucle foreach<br>";
+                echo "<h1>Boucle</h1><br>";
+                echo "===> Lecture du tableau à l'aide d'une boucle foreach<br><br>";
                 //Déclaration d'un compteur
                 $i = 0;
+
                 //Pour chaque élements du tableau
                 foreach ($table as $item => $value) {
                     //Affichage
-                    echo '<p>à la ligne n°'.$i.' correspond à la clé "'.$item.'" et contient "'.$value.'"</p>';
+                    echo '<div>à la ligne n°'.$i.' correspond à la clé "'.$item.'" et contient "'.$value.'"</div>';
                     $i++;
                 }
             } else if (isset($_GET['function'])) {
 
-                echo "<h1>Fonction</h1>";
-                echo "===> J'utilise ma fonction readTable()<br>";
+                echo "<h1>Fonction</h1><br>";
+                echo "===> J'utilise ma fonction readTable()<br><br>";
                 //Appel de la fonction readTable avec affichage.
                 readTable($table);
             } else {
@@ -127,7 +128,7 @@ session_start();
                 //Pour chaque éléments du tableau
                 foreach ($tableau as $item => $value) {
                     //affichage de la ligne du tableau
-                    echo '<p>à la ligne n°'.$i.' correspond à la clé "'.$item.'" et contient "'.$value.'"</p>';
+                    echo '<div>à la ligne n°'.$i.' correspond à la clé "'.$item.'" et contient "'.$value.'"</div>';
                     $i++;//incrémentation
                 }
             }
