@@ -55,7 +55,6 @@ session_start();
                 if (empty($_SESSION['table'])) {
                     echo "<h1>Les données ont bien été supprimées</h1>";
                 }
-
             } else if (isset($_GET['debugging'])) {
                 $table = $_SESSION['table'];
                 echo "<h1>Débogage</h1>";
@@ -104,7 +103,6 @@ session_start();
                     $i++;
                 }
             }
-
             ?>
 
         </section>
