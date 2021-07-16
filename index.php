@@ -19,12 +19,12 @@ session_start();
             </a>
             <?php
             //Vérification d'une session vide pour affichage de l'ul
-            if(!empty($_SESSION['table'])) {
+            if (!empty($_SESSION['table'])) {
                 include "./includes/ul.inc.html";
                 $table = $_SESSION['table'];
             }
             //Sécurité
-            if (empty($_SESSION['table']) && (isset($_GET['del']) || isset($_GET['debugging']) || isset($_GET['concatenation']) || isset($_GET['loop']) ||          isset($_GET['function']))) {
+            if (empty($_SESSION['table']) && (isset($_GET['del']) || isset($_GET['debugging']) || isset($_GET['concatenation']) || isset($_GET['loop']) || isset($_GET['function']))) {
                 header("Location:index.php");
             }
             ?>
@@ -78,20 +78,20 @@ session_start();
 
                 //Concaténation sans modifs
                 echo "<p>===> Construction d'une phrase avec le contenu du tableau :</p>";
-                echo "<h2>".$table["first_name"]." ".$table["last_name"]. "</h2>";
-                echo "<p>".$table["age"]." ans, je mesure ".$table["size"]."m et je fais partie des ".$table["situation"]."s de la promo Simplon</p><br>";
+                echo "<h2>" . $table["first_name"] . " " . $table["last_name"] . "</h2>";
+                echo "<p>" . $table["age"] . " ans, je mesure " . $table["size"] . "m et je fais partie des " . $table["situation"] . "s de la promo Simplon</p><br>";
 
-                //MAJ Du tableau
+                //MAJ du tableau
                 $table['first_name'] = ucfirst($table['first_name']);
                 $table['last_name'] = strtoupper($table['last_name']);
                 echo "<p>===> Construction d'une phrase après MAJ du tableau :</p>";
-                echo "<h2>".$table["first_name"]." ".$table["last_name"]."</h2>";
-                echo "<p>".$table["age"]." ans, je mesure ".$table["size"]."m et je fais partie des ".$table["situation"]."s de la promo Simplon</p><br>";
+                echo "<h2>" . $table["first_name"] . " " . $table["last_name"] . "</h2>";
+                echo "<p>" . $table["age"] . " ans, je mesure " . $table["size"] . "m et je fais partie des " . $table["situation"] . "s de la promo Simplon</p><br>";
 
                 //Remplacement du point par la virgule
                 echo "<p>===> Affichage d'une virgule à la place du point pour la taille :</p>";
-                echo "<h2>".$table["first_name"]." ".$table["last_name"]."</h2>";
-                echo "<p>".$table["age"]." ans, je mesure " . str_replace('.', ',', $table['size']) . "m et je fais partie des". $table['situation']                ."s de la promo Simplon</p>";
+                echo "<h2>" . $table["first_name"] . " " . $table["last_name"] . "</h2>";
+                echo "<p>" . $table["age"] . " ans, je mesure " . str_replace('.', ',', $table['size']) . "m et je fais partie des" . $table['situation'] . "s de la promo Simplon</p>";
 
             } else if (isset($_GET['loop'])) {
 
@@ -103,7 +103,7 @@ session_start();
                 //Pour chaque élements du tableau
                 foreach ($table as $item => $value) {
                     //Affichage
-                    echo '<div>à la ligne n°'.$i.' correspond à la clé "'.$item.'" et contient "'.$value.'"</div>';
+                    echo '<div>à la ligne n°' . $i . ' correspond à la clé "' . $item . '" et contient "' . $value . '"</div>';
                     $i++;
                 }
             } else if (isset($_GET['function'])) {
@@ -118,9 +118,11 @@ session_start();
                 <a href='index.php?add' class='btn btn-primary px-2'>Ajouter des données</a>
                 ";
             }
+
             /**
              * @param $tableau
              */
+
             function readTable($tableau)
             {
                 //Compteur
@@ -128,18 +130,18 @@ session_start();
                 //Pour chaque éléments du tableau
                 foreach ($tableau as $item => $value) {
                     //affichage de la ligne du tableau
-                    echo '<div>à la ligne n°'.$i.' correspond à la clé "'.$item.'" et contient "'.$value.'"</div>';
+                    echo '<div>à la ligne n°' . $i . ' correspond à la clé "' . $item . '" et contient "' . $value . '"</div>';
                     $i++;//incrémentation
                 }
             }
-            ?>
 
+            ?>
         </section>
     </div>
 </div>
-
-</body>
 <footer>
     <?php include "./includes/footer.inc.html"; ?>
 </footer>
+</body>
+
 </html>
